@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ControlesTipoVista.ViewModel"
+             x:Class="ControlesTipoVista.Views.DatePicker_Vista"
+             Title="DatePicker_Vista">
+    <ContentPage.BindingContext>
+        <local:DatePickerViewModel/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Spacing="20">
+
+        <DatePicker MinimumDate="01/01/2023"
+                    MaximumDate="12/31/2023"
+                    Date="05/17/2023"
+                    Format="dd/MM/yyyy"
+                    TextColor="Purple"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    BackgroundColor="LightSalmon"
+                    DateSelected="DatePicker_DateSelected"/>
+
+        <Label x:Name="lblDatePicker"/>
+
+        <DatePicker MinimumDate="{Binding MinDate}"
+                    MaximumDate="{Binding MaxDate}"
+                    Date="{Binding SelectedDate}"/>
+
+
+    </VerticalStackLayout>
+</ContentPage>

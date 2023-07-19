@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlesTipoVista.Views.ImageButton_Vista"
+             xmlns:local="clr-namespace:ControlesTipoVista.ViewModel"
+             Title="ImageButton_Vista"
+             BackgroundColor="Gray">
+    <ContentPage.BindingContext>
+        <local:ImgBtnViewModel/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout  VerticalOptions="Center">
+
+        <ImageButton Source="dotnet_bot.png"
+                     Aspect="AspectFit"
+                     BorderColor="Black"
+                     WidthRequest="100"
+                     HeightRequest="100"
+                     BorderWidth="3"
+                     CornerRadius="100"
+                     Padding="5"
+                     IsEnabled="True"
+                     BackgroundColor="Red"
+                     Command="{Binding ContadorCommand}">
+
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Red" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Green" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </VisualStateManager.VisualStateGroups>
+            
+        </ImageButton>
+
+        <Label x:Name="label"
+               HorizontalOptions="Center"
+               Text="{Binding LabelView.Text}"/>
+
+    </VerticalStackLayout>
+</ContentPage>

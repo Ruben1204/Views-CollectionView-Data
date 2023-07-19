@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ControlesTipoVista.ViewModel"
+             x:Class="ControlesTipoVista.Views.Entry_Vista"
+             Title="Entry_Vista">
+    <ContentPage.BindingContext>
+        <local:EntryViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Spacing="20">
+        <Entry x:Name="entrada"
+               Placeholder="Ingresa Texto"
+               CharacterSpacing="5"
+               MaxLength="20"
+               CursorPosition="5"
+               SelectionLength="3"
+               TextTransform="Lowercase"
+               Keyboard="Chat"
+               IsSpellCheckEnabled="False"
+               IsTextPredictionEnabled="False"
+               IsReadOnly="False"
+               TextChanged="entrada_TextChanged"
+               Completed="entrada_Completed"
+               ClearButtonVisibility="WhileEditing"
+               IsPassword="True"
+               ReturnType="Send"
+               ReturnCommand="{Binding EnterCommand}"
+               WidthRequest="200"/>
+        
+        <Label x:Name="resultLabel"
+               TextColor="Red"/>
+        
+        <Label x:Name="resultLabel1"/>
+        
+        <Label Text="{Binding TextoEtiqueta}"
+               TextColor="Purple"/>
+    </VerticalStackLayout>
+</ContentPage>

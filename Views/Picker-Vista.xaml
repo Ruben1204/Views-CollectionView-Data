@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ControlesTipoVista.ViewModel"
+             x:Class="ControlesTipoVista.Views.Picker_Vista"
+             Title="Picker_Vista">
+    <ContentPage.BindingContext>
+        <local:ListViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout HorizontalOptions="Center"
+                         Margin="0,20">
+        <Picker Title="Seleccione una Opción"
+                TitleColor="Orange"
+                CharacterSpacing="5"
+                FontAttributes="Bold"
+                FontAutoScalingEnabled="True"
+                FontFamily="OpenSansSemibold"
+                FontSize="12"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                ItemsSource="{Binding Robots}"
+                ItemDisplayBinding="{Binding Nombre}"
+                SelectedItem="{Binding SelectedRobot}"/>
+        
+        <Image Source="{Binding SelectedRobot.Imagen}"
+               WidthRequest="50"
+               HeightRequest="50"/>
+        <Label Text="{Binding SelectedRobot.Nombre}"/>
+        <Label Text="{Binding SelectedRobot.Peso}"/>
+        
+        <!--Indice de la Lista-->
+
+        <Label Text="Indice de la lista"
+               TextColor="Red"/>
+        <Label Text="{Binding SelectedRobotIndex}"/>
+
+    </VerticalStackLayout>
+</ContentPage>

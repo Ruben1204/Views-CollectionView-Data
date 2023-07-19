@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlesTipoVista.Views.Switch_Vista"
+             Title="Switch_Vista">
+    <VerticalStackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center">
+       <!--Ejemplo con Evento-->
+
+        <Switch IsToggled="True"
+                OnColor="Orange"
+                ThumbColor="Red"
+                Toggled="Switch_Toggled"
+                IsEnabled="True"/>
+
+        <Label x:Name="lblMensaje"/>
+        
+        <!--Ejemplo usando Disparadores y vinculando Datos-->
+
+        <Switch x:Name="SwitchEnlazado"/>
+
+        <Label>
+            <Label.Triggers>
+                <DataTrigger TargetType="Label"
+                             Binding="{Binding Source={x:Reference SwitchEnlazado}, Path=IsToggled}"
+                             Value="true">
+                    <Setter Property="Text"
+                            Value="Si este Video ha aportado a tu conocomiento !SUSCRIBETE!"/>
+                    <Setter Property="TextColor"
+                            Value="Red"/>
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>

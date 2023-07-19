@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ControlesTipoVista.ViewModel"
+             x:Class="ControlesTipoVista.Views.Refresh_Vista"
+             Title="Refresh_Vista">
+
+    <ContentPage.Resources>
+        <DataTemplate x:Key="ColorItemTemplate">
+            <BoxView Color="{Binding .}" WidthRequest="300" HeightRequest="150" Margin="10"/>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <local:RefreshViewModel/>
+    </ContentPage.BindingContext>
+
+    <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 Command="{Binding RefreshCommand}"
+                 RefreshColor="Teal"
+                 BackgroundColor="Yellow"
+                 IsEnabled="True">
+        <ScrollView>
+            <FlexLayout Direction="Row"
+                        Wrap="Wrap"
+                        AlignItems="Center"
+                        AlignContent="Center"
+                        BindableLayout.ItemsSource="{Binding Colores}"
+                        BindableLayout.ItemTemplate="{StaticResource ColorItemTemplate}"/>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

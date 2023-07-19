@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Local="clr-namespace:ControlesTipoVista.ViewModel"
+             x:Class="ControlesTipoVista.Views.Swipe_Vista"
+             Title="Swipe_Vista">
+    
+    <ContentPage.BindingContext>
+        <Local:SaludarViewModel/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout VerticalOptions="Center">
+        <SwipeView Threshold="150">
+            <SwipeView.LeftItems>
+                <SwipeItems Mode="Reveal">
+                    <SwipeItem Text="Me gusta!"
+                               IconImageSource="dotnet_bot.png"
+                               BackgroundColor="LightGreen"
+                               Command="{Binding ConsultarDatosCommand}"
+                               Invoked="SwipeItem_Invoked"/>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <SwipeView.RightItems>
+                <SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
+                    
+                    <!--<SwipeItem Text="No Me gusta!"
+                               IconImageSource="dotnet_bot.png"
+                               BackgroundColor="Red"
+                               Invoked="SwipeItem_Invoked_1"
+                               Command="{Binding ConsultarDatosCommand}"/>-->
+                    <SwipeItemView Command="{Binding ConsultarDatosCommand}"
+                                   BackgroundColor="Purple">
+                        <StackLayout>
+                            <Entry x:Name="resultEntry"
+                                   Placeholder="Escribe!"
+                                   HorizontalOptions="CenterAndExpand"
+                                   PlaceholderColor="Yellow"
+                                   TextColor="White"/>
+                            <Label Text="Suscribete"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center"
+                                   TextColor="Yellow"/> 
+                        </StackLayout>
+                        
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.RightItems>
+        </SwipeView>
+
+        <Grid HeightRequest="120"
+              WidthRequest="300"
+              BackgroundColor="LightGray"
+              RowDefinitions="60,60">
+            <Label Text="Deslizar a derecha o izquierda"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <Label Grid.Row="1"
+                   Text="{Binding Resultado}"
+                   TextColor="Red"
+                   HorizontalOptions="Center"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

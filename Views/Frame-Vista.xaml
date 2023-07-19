@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlesTipoVista.Views.Frame_Vista"
+             Title="Frame_Vista">
+    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Frame HasShadow="True" 
+               Padding="10" 
+               BackgroundColor="#4ceeff"
+               BorderColor="Purple"
+               CornerRadius="100"
+               WidthRequest="80"
+               HeightRequest="80">
+            <Image Source="dotnet_bot.png" Aspect="AspectFit"/>
+        </Frame>
+        <Frame HasShadow="False" Padding="10" BackgroundColor="Purple" Margin="50,0,0,0">
+            <Button Text="My Button" BackgroundColor="#2196F3" TextColor="#FFFFFF"/>
+        </Frame>
+    </HorizontalStackLayout>
+</ContentPage>

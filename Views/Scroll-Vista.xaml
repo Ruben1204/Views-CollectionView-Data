@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlesTipoVista.Views.Scroll_Vista"
+             Title="Scroll_Vista">
+
+    <Grid Margin="20"
+          RowDefinitions="Auto,*,Auto">
+        
+        <Label Text="LISTADO DE PAISES"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+        
+        <ScrollView Grid.Row="1"
+                VerticalOptions="FillAndExpand"
+                Orientation="Neither"
+                VerticalScrollBarVisibility="Never"
+                Scrolled="ScrollView_Scrolled">
+        
+        <ListView ItemsSource="{Binding Paises}" BackgroundColor="LightBlue">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Capital}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+            
+    </ScrollView>
+
+        <Button Grid.Row="2"
+                Text="FINAL DEL DESPLAZAMIENTO"
+                Clicked="Button_Clicked"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ControlesTipoVista.ViewModel"
+             x:Class="ControlesTipoVista.Views.CarouselView_Vista"
+             Title="CarouselView_Vista"
+             FlowDirection="RightToLeft">
+    <ContentPage.BindingContext>
+        <local:ListViewModel/>
+    </ContentPage.BindingContext>
+    <!--<ContentPage.Resources>
+        <ContentView x:Key="VistaVaciaBasica">
+            <StackLayout>
+                <Label Text="No hay elementos para mostrar."
+                       Margin="10,25,10,10"
+                       FontSize="18"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center"/>
+            </StackLayout>
+        </ContentView>
+        <ContentView x:Key="VistaVaciaAvanzada">
+            <StackLayout>
+                <Label Text="No se encontraon resultados en tu filtro."
+                       Margin="10,25,10,10"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center"/>
+                <Label Text="Y si intentas con otro filtro?"
+                       FontSize="12"
+                       FontAttributes="Italic"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center"/>
+            </StackLayout>
+        </ContentView>
+    </ContentPage.Resources>-->
+    <VerticalStackLayout>
+        <!--<Label 
+               Text="{Binding PreviousRobot.Nombre, StringFormat='Nombre Robot Anterior: {0}'}"               
+               HorizontalOptions="Center"/>
+        <Label Text="{Binding CurrentRobot.Nombre, StringFormat='Nombre Robot Actual: {0}'}"               
+               HorizontalOptions="Center"/>
+        <Label Text="{Binding CurrentPosition, StringFormat='Posición actual: {0}'}"               
+               HorizontalOptions="Center"/>
+        <Label Text="{Binding  PreviousPosition, StringFormat='Posición anterior: {0}'}"               
+               HorizontalOptions="Center"/>-->
+
+        <!--<StackLayout>
+            <Label Text="Alternativas para la vista vacia"/>
+            <Switch Toggled="Switch_Toggled"/>
+        </StackLayout>-->
+        <Label x:Name="lbl1" HorizontalOptions="Center"/>
+        <Label x:Name="lbl2" HorizontalOptions="Center"/>
+        <Label x:Name="lbl3" HorizontalOptions="Center"/>
+        <Label x:Name="lbl4" HorizontalOptions="Center"/>
+        <Label x:Name="lbl5" HorizontalOptions="Center"/>
+        <Label x:Name="lbl6" HorizontalOptions="Center"/>
+        <Label x:Name="lbl7" HorizontalOptions="Center"/>
+        <Label x:Name="lbl8" HorizontalOptions="Center"/>
+        <Label Text="{Binding CurrentRobot.Nombre, StringFormat='Nombre Robot Actual: {0}'}"               
+               HorizontalOptions="Center"/>
+        <CarouselView ItemsSource="{Binding Robotse}"
+                      
+                      RemainingItemsThreshold="2"
+                      PeekAreaInsets="300"
+                      CurrentItemChangedCommand="{Binding ItemChangedCommand}"
+                      CurrentItemChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=CurrentItem}"
+                      PositionChangedCommand="{Binding PositionChangedCommand}"
+                      PositionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=Position}"
+                      Loop="False"
+                      IsSwipeEnabled="false"
+                      x:Name="carouselView"
+                      Scrolled="carouselView_Scrolled"
+                      HorizontalScrollBarVisibility="Always"
+                      VerticalScrollBarVisibility="Always"
+                      >
+            <!--<CarouselView.EmptyView>
+                <ContentView>
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand">
+                        <Label Text="No se encontraron resultados."
+                               Margin="10,25,10,10"
+                               FontAttributes="Bold"
+                               FontSize="18"
+                               HorizontalOptions="Fill"
+                               HorizontalTextAlignment="Center"/>
+                        <Label Text="Revisa los datos de entrada..."
+                               FontSize="12"
+                               HorizontalOptions="Fill"
+                               HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </ContentView>
+            </CarouselView.EmptyView>-->
+            <CarouselView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"
+                                   ItemSpacing="10"
+                                   SnapPointsType="MandatorySingle"
+                                   SnapPointsAlignment="End"/>
+            </CarouselView.ItemsLayout>
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame HasShadow="True"
+                               BorderColor="DarkGray"
+                               CornerRadius="5"
+                               Margin="20"
+                               WidthRequest="300"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+
+                            <SwipeView>
+                                <SwipeView.TopItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Favorite"
+                                               IconImageSource="favorite.png"
+                                               BackgroundColor="LightGreen"/>
+
+                                    </SwipeItems>
+                                </SwipeView.TopItems>
+                                <SwipeView.BottomItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Delete"
+                                               IconImageSource="delete.png"
+                                               BackgroundColor="LightPink"/>
+
+                                    </SwipeItems>
+                                </SwipeView.BottomItems>
+
+                                <StackLayout>
+
+                                    <Label Text="{Binding Nombre}"
+                                           FontAttributes="Bold"
+                                           FontSize="18"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                    <Image Source="{Binding Imagen}"
+                                           Aspect="AspectFit"
+                                           HeightRequest="150"
+                                           WidthRequest="150"
+                                           HorizontalOptions="Center"/>
+
+                                    <Label Text="{Binding Peso}"
+                                           HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Details}"
+                                           FontAttributes="Italic"
+                                           HorizontalOptions="Center"
+                                           MaxLines="5"
+                                           LineBreakMode="TailTruncation"/>
+
+                                </StackLayout>
+                            </SwipeView>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <!--<IndicatorView x:Name="vistaIndicador"
+                       IndicatorColor="LightGray"
+                       SelectedIndicatorColor="DarkGray"
+                       HorizontalOptions="Center"/>-->
+        <Button Clicked="Button_Clicked"
+                Text="Boton de Prueba"
+                Margin="35,0,35,0"/>
+    </VerticalStackLayout>
+</ContentPage>

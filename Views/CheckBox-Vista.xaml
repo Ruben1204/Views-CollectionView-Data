@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlesTipoVista.Views.CheckBox_Vista"
+             Title="CheckBox_Vista">
+    <VerticalStackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         WidthRequest="200">
+
+        <CheckBox IsChecked="True"
+                  IsEnabled="True"
+                  Color="Orange"
+                  CheckedChanged="CheckBox_CheckedChanged"/>
+        
+        <Label x:Name="lblprueba"
+               Text="Si este video te esta aportando a tu conocimiento suscribete o apoya el video con un like o compartelo"/>
+
+        <CheckBox x:Name="checkBox"/>
+
+        <Label Text="Si este video te esta aportando a tu conocimiento suscribete o apoya el video con un like o compartelo">
+            <Label.Triggers>
+                <DataTrigger TargetType="Label"
+                             Binding="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
+                             Value="true">
+                    <Setter Property="FontAttributes"
+                            Value="Italic, Bold" />
+                    <Setter Property="FontSize"
+                            Value="18"/>
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+
+    </VerticalStackLayout>
+</ContentPage>

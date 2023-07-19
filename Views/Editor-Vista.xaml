@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlesTipoVista.Views.Editor_Vista"
+             Title="Editor_Vista">
+    <VerticalStackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center">
+        
+        <Editor x:Name="controlEditor"
+                Placeholder="Ingresa multiple texto aqui"
+                PlaceholderColor="Gray"
+                HeightRequest="150"
+                AutoSize="TextChanges"
+                CharacterSpacing="10"
+                CursorPosition="10"
+                SelectionLength="3"
+                FontAttributes="Bold"
+                FontFamily="OpenSansRegular"
+                FontSize="20"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                IsTextPredictionEnabled="True"
+                TextColor="Red"
+                Keyboard="Email"
+                MaxLength="40"
+                TextTransform="Uppercase"
+                IsSpellCheckEnabled="True"
+                IsReadOnly="False"
+                TextChanged="controlEditor_TextChanged"
+                Completed="controlEditor_Completed"/>
+
+        <Label x:Name="resultLabel"
+           TextColor="Blue"
+           FontSize="16"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"/>
+        <Label x:Name="resultLabel1"
+           TextColor="Purple"
+           FontSize="16"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>

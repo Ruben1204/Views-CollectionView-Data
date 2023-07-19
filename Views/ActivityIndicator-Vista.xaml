@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ControlesTipoVista.ViewModel"
+             x:Class="ControlesTipoVista.Views.ActivityIndicator_Vista"
+             Title="ActivityIndicator_Vista">
+    <ContentPage.BindingContext>
+        <local:IndicatorViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Spacing="200">
+        <Button WidthRequest="200"
+                Text="Activar Suscripción"
+                Command="{Binding ActivarCommand}"/>
+        
+        <ActivityIndicator IsRunning="{Binding Activador}"
+                           Color="Red"/>
+
+        <Label Text="{Binding Mensaje}"
+               TextColor="Red"/>
+
+    </VerticalStackLayout>
+</ContentPage>

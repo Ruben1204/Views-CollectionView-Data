@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:VM="clr-namespace:ControlesTipoVista.ViewModel"
+             xmlns:Plantillas="clr-namespace:ControlesTipoVista.Data"
+             x:Class="ControlesTipoVista.Views.Lista_Vista"
+             Title="Lista_Vista"
+             FlowDirection="RightToLeft">
+    <ContentPage.BindingContext>
+        <VM:ListViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <DataTemplate x:Key="PlantillaparaRobotsGrandes">
+            <ViewCell>
+                <ViewCell.ContextActions>
+                    <MenuItem Text="Agregar a Favoritos"/>
+                    <MenuItem Text="Eliminar"/>
+                </ViewCell.ContextActions>
+                <Grid Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.RowSpan="2"
+                                   Source="{Binding Imagen}"
+                                   Aspect="AspectFit"
+                                   WidthRequest="60"
+                                   HeightRequest="60"/>
+                    <Label Grid.Column="1"
+                                   Text="{Binding Nombre}"
+                                   FontAttributes="Bold"
+                                   TextColor="LightGreen"/>
+                    <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding Peso}"
+                                   FontAttributes="Italic"
+                                   VerticalOptions="End"
+                                  TextColor="LightGreen"/>
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+
+        <DataTemplate x:Key="PlantillaparaRobotsPequeños">
+            <ViewCell>
+                <Grid Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.RowSpan="2"
+                                   Source="{Binding Imagen}"
+                                   Aspect="AspectFit"
+                                   WidthRequest="30"
+                                   HeightRequest="30"/>
+                    <Label Grid.Column="1"
+                                   Text="{Binding Nombre}"
+                                   FontAttributes="Bold"
+                                   TextColor="Red"/>
+                    <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding Peso}"
+                                   FontAttributes="Italic"
+                                   VerticalOptions="End"
+                                  TextColor="Red"/>
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+
+        <Plantillas:SelectorPlantillaDeDatosRobot x:Key="SelectorRobots"
+                                                  robotGrande="{StaticResource PlantillaparaRobotsGrandes}"
+                                                  robotPequeño="{StaticResource PlantillaparaRobotsPequeños}"/>
+    </ContentPage.Resources>
+    <ScrollView>
+    <!--<VerticalStackLayout Spacing="10" Margin="20,0,0,0">
+        
+            <Label HorizontalOptions="Center" Text="Lista de Tipo ViewCell"/>
+            <ListView ItemsSource="{Binding Robots}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.RowSpan="2"
+                                   Source="{Binding Imagen}"
+                                   Aspect="AspectFit"
+                                   WidthRequest="60"
+                                   HeightRequest="60"/>
+                            <Label Grid.Column="1"
+                                   Text="{Binding Nombre}"
+                                   FontAttributes="Bold"/>
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding Peso}"
+                                   FontAttributes="Italic"
+                                   VerticalOptions="End"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+            <Label HorizontalOptions="Center" Text="Lista de Tipo TextCell"/>
+            <ListView ItemsSource="{Binding Robots}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Nombre}"
+                              TextColor="Red"
+                              Detail="{Binding Peso}"
+                              DetailColor="Blue"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        
+        </VerticalStackLayout>-->
+
+        <StackLayout Margin="20">
+            <ListView ItemsSource="{Binding Robots}"
+                      ItemTemplate="{StaticResource SelectorRobots}"
+                      ItemSelected="ListView_ItemSelected"
+                      SelectionMode="Single"
+                      Footer="{Binding .}"
+                      SeparatorVisibility="None"
+                      SeparatorColor="Purple"
+                      HasUnevenRows="False"
+                      RowHeight="40"
+                      Scrolled="ListView_Scrolled"
+                      VerticalScrollBarVisibility="Always">
+                <ListView.Header>
+                    <StackLayout BackgroundColor="LightGreen">
+                        <Label Margin="10,0,0,0"
+                               Text="Robots"
+                               TextColor="Red"
+                               FontSize="12"
+                               FontAttributes="Bold"/>
+                    </StackLayout>
+                </ListView.Header>
+
+                <ListView.FooterTemplate>
+                    <DataTemplate>
+                        <StackLayout BackgroundColor="LightSalmon">
+                            <Label Margin="10,0,0,0"
+                                   Text="Suscribete y se el mejor"
+                                   TextColor="Red"
+                                   FontSize="12"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+                                     
+                    </DataTemplate>
+                </ListView.FooterTemplate>
+            </ListView>
+            <Label x:Name="SelecionEtiqueta"/>
+            <Label x:Name="SelecionEtiqueta1"/>
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

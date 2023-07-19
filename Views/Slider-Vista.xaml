@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlesTipoVista.Views.Slider_Vista"
+             Title="Slider_Vista"
+             Padding="10,0">
+    
+    <VerticalStackLayout VerticalOptions="Center">
+        
+        <!--Forma de manipulacion con eventos-->
+        <Label x:Name="rotarEtiqueta"
+               Text="Texto de Rotación"
+               FontSize="18"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+
+        <Slider Maximum="360"
+                MaximumTrackColor="Purple"
+                MinimumTrackColor="Blue"
+                ThumbImageSource="dotnet_bot.png"
+                ValueChanged="Slider_ValueChanged"/>
+
+        <Label x:Name="MostrarEtiqueta"
+               Text="(No Inicializado)"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        
+        <!--Forma de manipulacion con enlaces-->
+
+
+        <Label Rotation="{Binding Source={x:Reference slider}, Path=Value}"
+               Text="Texto de Rotación"
+               FontSize="18"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+
+        <Slider Maximum="360"
+                MaximumTrackColor="Purple"
+                MinimumTrackColor="Blue"
+                ThumbColor="Red"
+                x:Name="slider"/>
+
+        <Label 
+               Text="{Binding Source={x:Reference slider}, Path=Value, StringFormat='El valor del slider es {0:F0}'}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>

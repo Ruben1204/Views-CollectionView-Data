@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlesTipoVista.Views.SearchBar_Vista"
+             Title="SearchBar_Vista">
+    <VerticalStackLayout Margin="30,10,30,0">
+
+        <SearchBar TextChanged="SearchBar_TextChanged"
+                   CancelButtonColor="Red"
+                   CharacterSpacing="5"
+                   CursorPosition="5"
+                   FontAttributes="Italic"
+                   FontFamily="OpenSansRegular"
+                   Placeholder="Escribe algo aqui.."
+                   PlaceholderColor="Gray"
+                   SelectionLength="10"
+                   TextColor="LightGreen"
+                   VerticalTextAlignment="Center"
+                   SearchButtonPressed="SearchBar_SearchButtonPressed"/>
+
+        <ListView x:Name="searchResults"/>
+        <Label x:Name="lblprueba"
+               TextColor="Red"/>
+    </VerticalStackLayout>
+</ContentPage>
